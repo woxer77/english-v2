@@ -48,7 +48,7 @@ const NumberSection: React.FC = () => {
                 register={register}
                 name={name}
                 error={typeof errors.videoNumber?.message === 'string' ? errors.videoNumber.message : ''}
-                customClassName={styles.numberInput}
+                className={styles.numberInput}
                 startIconId="tag"
                 value={value}
                 onChange={onChange}

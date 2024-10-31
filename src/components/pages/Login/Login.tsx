@@ -1,26 +1,30 @@
-import React from "react";
+import React from 'react';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import Field from "../../UI/Field/Field";
-import Button from "../../UI/Button/Button";
-import Alert from "../../UI/Alert/Alert";
+import Field from '../../UI/Field/Field';
+import Button from '../../UI/Button/Button';
+import Alert from '../../UI/Alert/Alert';
 
-import { login } from "../../../services/auth";
-import { emailOptions, passwordOptions } from "../../../helpers/AuthForm/authForm";
-import useAuth from "../../../hooks/common/useAuth";
-import { IUser } from "../../../ts/interfaces/types";
-import { useAlert } from "../../../hooks/common/useAlert";
+import { login } from '../../../services/auth';
+import { emailOptions, passwordOptions } from '../../../helpers/AuthForm/authForm';
+import useAuth from '../../../hooks/common/useAuth';
+import { IUser } from '../../../ts/interfaces/types';
+import { useAlert } from '../../../hooks/common/useAlert';
 
-import formStyles from "../../../assets/styles/scss/common/AuthForm.module.scss";
-import styles from "../../../assets/styles/scss/common/Auth.module.scss";
+import formStyles from '../../../assets/styles/scss/common/AuthForm.module.scss';
+import styles from '../../../assets/styles/scss/common/Auth.module.scss';
 
 const Login: React.FC = () => {
   const { isActive, message, type, activateAlert } = useAlert();
 
   const mutationFn = (user: IUser) => login(user);
-  const { formHook, onSubmit, isPending } = useAuth( 'login', mutationFn, activateAlert);
-  const { register, handleSubmit, formState: { errors } } = formHook;
+  const { formHook, onSubmit, isPending } = useAuth('login', mutationFn, activateAlert);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = formHook;
 
   return (
     <>
@@ -32,27 +36,30 @@ const Login: React.FC = () => {
           <form className={formStyles.form} onSubmit={handleSubmit(onSubmit)}>
             <Field
               register={register}
-              name='email'
+              name="email"
               options={emailOptions}
               error={typeof errors?.email?.message === 'string' ? errors?.email?.message : ''}
-              customClassName={formStyles.field}
+              className={formStyles.field}
               startIconId="email"
-              placeholder="Email"
+              placeholder="Email (email for test: test@gmail.com)"
             />
             <Field
               register={register}
-              name='password'
+              name="password"
               options={passwordOptions}
               error={typeof errors?.password?.message === 'string' ? errors?.password?.message : ''}
-              customClassName={formStyles.field}
+              className={formStyles.field}
               startIconId="password"
-              placeholder="Password"
+              placeholder="Password (password for test: Qwerty123)"
               isSecret
             />
             <Button isLoading={isPending}>Sign In</Button>
           </form>
           <div className={styles.signUp}>
-            You haven't any account? <Link to="/registration" className="link">Sign Up!</Link>
+            You haven't any account?{' '}
+            <Link to="/registration" className="link">
+              Sign Up!
+            </Link>
           </div>
         </div>
       </div>

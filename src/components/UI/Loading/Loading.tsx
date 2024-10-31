@@ -3,14 +3,14 @@ import React from 'react';
 import styles from './Loading.module.scss';
 
 interface LoadingProps {
-  customClassName?: string;
+  className?: string;
 }
 
-const Loading: React.FC<LoadingProps> = ({ customClassName }) => {
-  const loadingStyles = customClassName ? `${styles.spinner} ${customClassName}` : styles.spinner;
+const Loading: React.FC<LoadingProps> = ({ className }) => {
+  const loadingClassName = className ? `${styles.spinner} ${className}` : styles.spinner;
 
   return (
-    <div className={loadingStyles} />
+    <div className={loadingClassName} />
   );
 };
 

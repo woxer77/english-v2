@@ -19,7 +19,6 @@ import styles from './EnterLink.module.scss';
 const EnterLink: React.FC = () => {
   const userId = useAppSelector((state) => state.userReducer.userId);
   const history = useAppSelector((state) => state.userReducer.history);
-
   const [isDialogOpen, setIsDialogOpen] = React.useState<boolean>(false);
 
   const { register, handleSubmit, formState: { errors } } = useForm({ mode: "onBlur" });
@@ -61,7 +60,7 @@ const EnterLink: React.FC = () => {
             name="link"
             placeholder="YouTube link"
             startIconId="link"
-            customClassName={styles.field}
+            className={styles.field}
             error={typeof errors?.link?.message === 'string' ? errors?.link?.message : ''}
             options={linkOptions}
           />
@@ -73,7 +72,7 @@ const EnterLink: React.FC = () => {
           >
             <EnterLinkSvgSelector iconId="history"/> History
           </button>
-          <Button customClassName={styles.button} isLoading={mutationPlaylist.isPending || mutationVideo.isPending}>
+          <Button className={styles.button} isLoading={mutationPlaylist.isPending || mutationVideo.isPending}>
             Send
           </Button>
         </form>

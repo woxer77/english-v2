@@ -62,7 +62,7 @@ const TypeArea: React.FC<TypeAreaProps> = ({ userId, videoId }) => {
             register={register}
             name="sentence"
             error={typeof errors?.sentence?.message === 'string' ? errors?.sentence.message : ''}
-            customClassName={styles.textField}
+            className={styles.textField}
             options={sentenceOptions}
             placeholder="Type a sentence here..."
           />

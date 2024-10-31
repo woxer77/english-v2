@@ -32,7 +32,7 @@ const Registration: React.FC = () => {
                 name='email'
                 options={emailOptions}
                 error={typeof errors?.email?.message === 'string' ? errors?.email?.message : ''}
-                customClassName={formStyles.field}
+                className={formStyles.field}
                 startIconId="email"
                 placeholder="Email"
             />
@@ -41,7 +41,7 @@ const Registration: React.FC = () => {
                 name='password'
                 options={passwordOptions}
                 error={typeof errors?.password?.message === 'string' ? errors?.password?.message : ''}
-                customClassName={formStyles.field}
+                className={formStyles.field}
                 startIconId="password"
                 placeholder="Password"
                 isSecret
@@ -51,7 +51,7 @@ const Registration: React.FC = () => {
                 name='confirmPassword'
                 options={confirmPasswordOptions(getValues("password"))}
                 error={typeof errors?.confirmPassword?.message === 'string' ? errors?.confirmPassword?.message : ''}
-                customClassName={formStyles.field}
+                className={formStyles.field}
                 startIconId="confirmPassword"
                 placeholder="Confirm Password"
                 isSecret

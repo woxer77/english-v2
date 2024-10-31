@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 import HomeSvgSelector from "../../../assets/images/icons/home/HomeSvgSelector";
 
@@ -6,10 +6,9 @@ import { NotesBtnDirectionEnum } from "../../../ts/enums/enums";
 
 import styles from './NotesButton.module.scss';
 
-export interface NotesButtonProps {
-  onClick: () => void;
+type NotesButtonProps = ComponentProps<"button"> & {
   direction: NotesBtnDirectionEnum;
-}
+};
 
 const NotesButton: React.FC<NotesButtonProps> = ({ onClick, direction }) => {
   const iconId = direction === NotesBtnDirectionEnum.Left ? 'notesArrowLeft' : 'notesArrowRight';

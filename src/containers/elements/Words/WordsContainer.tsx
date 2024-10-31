@@ -20,7 +20,7 @@ const WordsContainer: React.FC<WordsContainerProps> = ({ userId }) => {
     queryKey: ['getWords', userId],
     queryFn: () => getWords(userId)
   });
-  const words = React.useMemo(() => Array.isArray(data?.data) ? data?.data as INotesElement[] : [], [data]);
+  const words = data?.data as INotesElement[] || [];
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {

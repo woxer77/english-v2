@@ -21,7 +21,7 @@ const ExpressionsContainer: React.FC<ExpressionsContainerProps> = ({ userId }) =
     queryKey: ['getExpressions', userId],
     queryFn: () => getExpressions(userId)
   });
-  const expressions = React.useMemo(() => Array.isArray(data?.data) ? data?.data as INotesElement[] : [], [data]);
+  const expressions = data?.data as INotesElement[] || [];
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {

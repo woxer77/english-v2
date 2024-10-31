@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { ComponentProps, CSSProperties } from "react";
 
 import type { FieldValues, RegisterOptions, UseFormRegister } from "react-hook-form";
 
@@ -9,26 +9,22 @@ import { BORDER_COLOR, GREY_COLOR } from '../../../configs/config';
 
 import styles from "./Field.module.scss";
 
-interface FieldProps {
+type FieldProps = ComponentProps<"input"> & {
   register: UseFormRegister<FieldValues>;
   name: string;
   options?: RegisterOptions;
   error?: string;
-  customClassName?: string;
   startIconId?: string;
-  placeholder?: string;
   isSecret?: boolean;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isLoading?: boolean;
-}
+};
 
 const Field: React.FC<FieldProps> = ({
     register,
     name,
     options,
     error,
-    customClassName,
+    className,
     startIconId,
     placeholder,
     isSecret,
@@ -37,9 +33,9 @@ const Field: React.FC<FieldProps> = ({
     isLoading
   }) => {
   const [helperText, setHelperText] = React.useState<string | undefined>('');
-  const [showPassword, setShowPassword] = React.useState<boolean>(!isSecret);
+  const [showPassword, setShowPassword] = React.useState(!isSecret);
 
-  const fieldClassName = customClassName ? `${styles.field} ${customClassName}` : styles.field;
+  const fieldClassName = className ? `${styles.field} ${className}` : styles.field;
   const inputStyles: CSSProperties = {
     paddingLeft: startIconId ? '40px' : '10px',
     borderColor: error ? 'red' : BORDER_COLOR
@@ -59,7 +55,7 @@ const Field: React.FC<FieldProps> = ({
   return (
     <div className={fieldClassName}>
       {isLoading ?
-        <Loading customClassName={styles.loading} /> :
+        <Loading className={styles.loading} /> :
         startIconId && <AuthSvgSelector iconId={startIconId} className={styles.icon} />}
       {isSecret &&
         <div onClick={changePassVisibility} className={styles.icon} id={styles.visibility}>

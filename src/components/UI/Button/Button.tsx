@@ -1,25 +1,22 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 import Loading from "../Loading/Loading";
 
 import styles from './Button.module.scss';
 
-interface ButtonProps {
+type ButtonProps = ComponentProps<"button"> & {
   children: React.ReactNode;
-  customClassName?: string;
-  disabled?: boolean;
   isLoading?: boolean;
-  onClick?: () => void;
-}
+};
 
 const Button: React.FC<ButtonProps> = ({
     children,
-    customClassName,
+    className,
     disabled,
     isLoading,
     onClick
   }) => {
-  const buttonClassName = customClassName ? `${styles.button} ${customClassName}` : styles.button;
+  const buttonClassName = className ? `${styles.button} ${className}` : styles.button;
 
   return (
     <button className={buttonClassName} disabled={disabled || isLoading} onClick={onClick}>

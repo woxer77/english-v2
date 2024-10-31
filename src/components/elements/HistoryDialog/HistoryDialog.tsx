@@ -1,20 +1,21 @@
 import React, { CSSProperties } from 'react';
 
-import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
-import EnterLinkSvgSelector from "../../../assets/images/icons/enter-link/EnterLinkSvgSelector";
-import Dialog from "../../UI/Dialog/Dialog";
-import HistoryPlaylist from "../HistoryPlaylist/HistoryPlaylist";
-import HistorySkeleton from "../HistorySkeleton/HistorySkeleton";
+import EnterLinkSvgSelector
+  from '../../../assets/images/icons/enter-link/EnterLinkSvgSelector';
+import Dialog from '../../UI/Dialog/Dialog';
+import HistoryPlaylist from '../HistoryPlaylist/HistoryPlaylist';
+import HistorySkeleton from '../HistorySkeleton/HistorySkeleton';
 
-import { IPlaylistMediaData } from "../../../ts/interfaces/types";
-import { useAppDispatch } from "../../../hooks/common/redux";
-import { getLastVisitedVideo } from "../../../helpers/common/localStorage";
-import { getPlaylistsHistory } from "../../../services/youtube";
-import { setCurrMedia } from "../../../redux/slices/currVideoSlice";
-import { setAllMedia } from "../../../redux/slices/mediaSlice";
-import { setHistory } from "../../../redux/slices/userSlice";
+import { IPlaylistMediaData } from '../../../ts/interfaces/types';
+import { useAppDispatch } from '../../../hooks/common/redux';
+import { getLastVisitedVideo } from '../../../helpers/common/localStorage';
+import { getPlaylistsHistory } from '../../../services/youtube';
+import { setCurrMedia } from '../../../redux/slices/currVideoSlice';
+import { setAllMedia } from '../../../redux/slices/mediaSlice';
+import { setHistory } from '../../../redux/slices/userSlice';
 
 import styles from './HistoryDialog.module.scss';
 
@@ -71,7 +72,7 @@ const HistoryDialog: React.FC<HistoryDialogProps> = ({ isDialogOpen, setIsDialog
   return (
     <>
       <div className={styles.transparentBg} style={opacityStyle}/>
-      <Dialog customClassName={styles.dialog} style={dialogStyle}>
+      <Dialog className={styles.dialog} style={dialogStyle}>
         <div className={styles.header}>
           <p className={styles.title}>Last visited playlists history</p>
           <div className={styles.close} onClick={closeDialog}>
